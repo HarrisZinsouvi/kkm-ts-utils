@@ -1,3 +1,7 @@
+/**
+ *
+ * @param value
+ */
 export const isObject = (value: any): value is object =>
     typeof value === 'object' &&
     value != null &&
@@ -7,9 +11,16 @@ export const isObject = (value: any): value is object =>
     !(value instanceof RegExp) &&
     !(value instanceof String);
 
+/**
+ *
+ * @param parts
+ */
 export const toPointer = (parts: string[]) =>
     '#' + parts.map((part) => String(part).replace(/~/g, '~0').replace(/\//g, '~1')).join('/');
 
+/**
+ *
+ */
 export const decycle = () => {
     const paths = new WeakMap();
 
@@ -28,6 +39,9 @@ export const decycle = () => {
     };
 };
 
+/**
+ *
+ */
 export function retrocycle() {
     const parents = new WeakMap();
     const keys = new WeakMap();
@@ -48,6 +62,9 @@ export function retrocycle() {
         parent[keys.get(ref)] = value;
     }
 
+    /**
+     *
+     */
     return function reviver(this: object, key: string | symbol, value: any) {
         if (key === '$ref') {
             refs.add(this);
@@ -65,6 +82,10 @@ export function retrocycle() {
     };
 }
 
+/**
+ *
+ * @param JSON
+ */
 export const extend = (JSON: JSON) => {
     return Object.defineProperties(JSON, {
         decycle: {
@@ -76,7 +97,10 @@ export const extend = (JSON: JSON) => {
     });
 };
 
-
+/**
+ *
+ * @param str
+ */
 export function capitalize(str: string): string {
     if (str.length === 0) {
         return str;
@@ -95,6 +119,7 @@ export function capitalize(str: string): string {
 function isDate(value: any): boolean {
     return !isNaN(Date.parse(value));
 }
+
 /**
  * compare deux valeurs qu'ils soient de type primitifs, décimaux,dates, array ou objet
  * @param a
@@ -181,13 +206,18 @@ export function compareValues(a: any, b: any): boolean {
     }
     return JSON.stringify(a) === JSON.stringify(b);
 }
-// Fonction utilitaire pour vérifier si la valeur est un décimal
+
+/**
+ * Fonction utilitaire pour vérifier si la valeur est un décimal
+ */
 function isDecimal(value: any): boolean {
     const decimalRegex = /^-?\d+([^0-9]\d+)$/;
     return decimalRegex.test(value);
 }
 
-// Fonction utilitaire pour convertir une valeur décimale en nombre
+/**
+ * Fonction utilitaire pour convertir une valeur décimale en nombre
+ */
 function convertToNumericValue(value: any): string {
     return ('' + value).replace(/[^0-9.-]+/g, '.');
 }
@@ -201,7 +231,10 @@ export function stringifyWithoutNullUndefined(obj) {
 }
 
 
-
+/**
+ *
+ * @param key
+ */
 export function stringToUniqueIndex(key: string): number {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
