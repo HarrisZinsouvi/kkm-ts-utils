@@ -1,1 +1,1 @@
-export { isObject } from './string-utils/common'
+export * as stringUtils from './string-utils';
