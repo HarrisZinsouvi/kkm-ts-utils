@@ -319,3 +319,27 @@ export function toSlug(name: string): string {
         .replace(/[\s_]+/g, '-') // Remplacer les espaces et les underscores par des tirets
         .toLowerCase(); // Convertir le tout en minuscules
 }
+
+/**
+*@param str - la chaine à capitaliser
+* e.g: one -> One
+*/
+ export function capitalize(str: string){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
+/**
+*
+* @param str
+* convertit un nom sous format dot (.) vers un format complet
+* e.g: name.surname -> Name Surname
+*/
+export function fromDotNameToCompleteName(str:string){
+
+    str.replace(/([\w]+)-([\w]+)/g, (match, p1, p2) => {
+                            return capitalize(p1) + '-' + capitalize(p2);
+                        })
+                        .replace(/^([\w-]+)\.([\w-]+)$/, (match, p1, p2) => {
+                            return capitalize(p1) + ' ' + capitalize(p2);
+                        });
+}
