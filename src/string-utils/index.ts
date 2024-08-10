@@ -312,8 +312,8 @@ export function toSlug(name: string): string {
 * e.g: one -> One
 */
  export function capitalize(str: string){
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    };
+        return (str.length === 0) ? str : str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
 /**
  *
@@ -321,14 +321,7 @@ export function toSlug(name: string): string {
  * e.g: OneTwo -> Onetwo
  */
 export function capitalizefull(str: string): string {
-    if (str.length === 0) {
-        return str;
-    }
-
-    const firstChar = str.charAt(0).toUpperCase();
-    const restOfStr = str.slice(1).toLowerCase();
-
-    return firstChar + restOfStr;
+    return (str.length === 0) ? str: str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 /**
 *
