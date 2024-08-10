@@ -288,7 +288,7 @@ export const isYearMonthFormat = (format) => {
  * par exemple si le text est: a/b/name.ext on récupère name
  * @param text
  */
-export function getComponentNameFromScript(text: string) {
+export function getComponentNameFromPath(text: string) {
     const regex = /([^/]+)\.[^.]+$/;
     const match = text.match(regex);
     //console.log('Match: ' + match[1]);
