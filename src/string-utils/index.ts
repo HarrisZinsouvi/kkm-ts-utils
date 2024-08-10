@@ -97,20 +97,7 @@ export const extend = (JSON: JSON) => {
     });
 };
 
-/**
- *
- * @param str
- */
-export function capitalize(str: string): string {
-    if (str.length === 0) {
-        return str;
-    }
 
-    const firstChar = str.charAt(0).toUpperCase();
-    const restOfStr = str.slice(1).toLowerCase();
-
-    return firstChar + restOfStr;
-}
 
 /**
  *
@@ -328,6 +315,21 @@ export function toSlug(name: string): string {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
+/**
+ *
+ * @param str
+ * e.g: OneTwo -> Onetwo
+ */
+export function capitalizefull(str: string): string {
+    if (str.length === 0) {
+        return str;
+    }
+
+    const firstChar = str.charAt(0).toUpperCase();
+    const restOfStr = str.slice(1).toLowerCase();
+
+    return firstChar + restOfStr;
+}
 /**
 *
 * @param str
